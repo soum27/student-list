@@ -1,0 +1,18 @@
+services:
+    db:
+        image: api-images:v1
+        container_name: my_container_app
+
+
+    app:
+        image: php:apache
+        container_name: my_container_php
+        environment:
+            - USERNAME=toto
+            - PASSWORD=python
+        volumes:
+            - ./website:/var/www/html
+        ports:
+            - 80:80
+        depends_on:
+            - db
